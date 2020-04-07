@@ -26,7 +26,7 @@ class EmailSignUpActivity : AppCompatActivity() {
         if((application as MasterApplication).checkIsLogin()){
             finish()
             startActivity(Intent(this, InstagramPostListActivity::class.java))
-        }else{
+        } else{
             setContentView(R.layout.activity_email_sign_up)
             initView(this@EmailSignUpActivity)
             setUpListener(this)

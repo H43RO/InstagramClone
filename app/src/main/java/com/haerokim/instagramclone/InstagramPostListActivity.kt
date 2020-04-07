@@ -1,5 +1,6 @@
 package com.haerokim.instagramclone
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,18 +25,18 @@ class InstagramPostListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instagram_post_list)
 
-        glide = Glide.with(this)
+        glide = Glide.with(this@InstagramPostListActivity)
 
         (application as MasterApplication).service.getAllPosts().enqueue(
             object : Callback<ArrayList<Post>> {
                 override fun onFailure(call: Call<ArrayList<Post>>, t: Throwable) {
-
                 }
 
                 override fun onResponse(
                     call: Call<ArrayList<Post>>,
                     response: Response<ArrayList<Post>>
                 ) {
+
                     if (response.isSuccessful) {
                         val postList = response.body()
                         val adapter = PostAdapter(
@@ -46,10 +47,23 @@ class InstagramPostListActivity : AppCompatActivity() {
                         post_recyclerview.adapter = adapter
                         post_recyclerview.layoutManager =
                             LinearLayoutManager(this@InstagramPostListActivity)
+
                     }
                 }
             }
         )
+
+        user_info.setOnClickListener {
+            startActivity(Intent(this, UserInfo::class.java))
+        }
+
+        upload.setOnClickListener {
+            startActivity(Intent(this, PostUploadActivity::class.java))
+
+        }
+        my_feed.setOnClickListener {
+            startActivity(Intent(this, MyFeedList::class.java))
+        }
     }
 
 }
@@ -60,6 +74,7 @@ class PostAdapter(
     val inflater: LayoutInflater,
     val glide: RequestManager
 ) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val postOwner: TextView
         val postImage: ImageView
