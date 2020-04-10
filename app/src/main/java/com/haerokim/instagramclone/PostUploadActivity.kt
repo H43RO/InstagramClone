@@ -87,7 +87,7 @@ class PostUploadActivity : AppCompatActivity() {
             part, content
         ).enqueue(object: Callback<Post> {
             override fun onFailure(call: retrofit2.Call<Post>, t: Throwable) {
-
+                Log.d("error","실패")
             }
 
             override fun onResponse(call: retrofit2.Call<Post>, response: Response<Post>) {
