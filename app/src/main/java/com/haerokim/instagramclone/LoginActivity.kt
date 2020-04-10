@@ -3,10 +3,9 @@ package com.haerokim.instagramclone
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_email_sign_up.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_email_sign_up.login
 import kotlinx.android.synthetic.main.activity_email_sign_up.register
 import kotlinx.android.synthetic.main.activity_email_sign_up.username_inputbox
@@ -33,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
                 username, password
             ).enqueue(object : Callback<User> {
                 override fun onFailure(call: Call<User>, t: Throwable) {
-
+                    Toast.makeText(this@LoginActivity, "로그인에 실패했습니다", Toast.LENGTH_LONG).show()
                 }
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if(response.isSuccessful){

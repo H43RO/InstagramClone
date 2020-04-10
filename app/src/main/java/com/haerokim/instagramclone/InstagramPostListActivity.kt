@@ -59,7 +59,6 @@ class InstagramPostListActivity : AppCompatActivity() {
 
         upload.setOnClickListener {
             startActivity(Intent(this, PostUploadActivity::class.java))
-
         }
         my_feed.setOnClickListener {
             startActivity(Intent(this, MyFeedList::class.java))
