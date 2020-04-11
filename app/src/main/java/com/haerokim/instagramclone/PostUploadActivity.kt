@@ -32,6 +32,7 @@ class PostUploadActivity : AppCompatActivity() {
                 Toast.makeText(this, "업로드할 사진을 선택해주세요", Toast.LENGTH_LONG).show()
             }else{
                 uploadPost(filePath)
+                startActivity(Intent(this, MyFeedList::class.java))
             }
         }
 
