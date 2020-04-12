@@ -1,5 +1,4 @@
 package com.haerokim.myapplication
-
 import com.haerokim.instagramclone.Post
 import com.haerokim.instagramclone.User
 import okhttp3.MultipartBody
@@ -46,6 +45,6 @@ interface RetrofitService {
         @Part("content") requestBody: RequestBody
     ) : Call<Post>
 
-    @GET("post/list/")
+    @GET("instagram/post/list/")
     fun getUserPostList():Call<ArrayList<Post>>
 }
